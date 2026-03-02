@@ -3,31 +3,393 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Frontend Mentor | Multi-step form</title>
+  <title>Frontend Multi Step Form</title>
 
-  <link rel="stylesheet" href="assets/images/favicon-32x32.png">
-  <link rel="shortcut" href="">
+  <link rel="stylesheet" href="src/output.css">
+  <link rel="shortcut" href="assets/images/favicon-32x32.png">
+
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    .circle {
+      @apply w-9 h-9 flex items-center justify-center border border-white rounded-full font-bold;
+    }
+
+    .circle.active {
+      @apply bg-blue-200 text-black border-none;
+    }
+
+    .circle.active {
+  background-color: #bfe2fd;
+  color: #02295a;
+  border: none;
+}
+  </style>
 </head>
-<body>
-  
+
+<body class="bg-blue-100 min-h-screen flex items-center justify-center p-4">
+
+  <div class="bg-white w-full max-w-[900px] h-[600px] mx-auto md:flex rounded-xl shadow-xl overflow-hidden">
+
+    <!-- SIDEBAR -->
+    <div class="relative md:w-72">
+
+      <!-- IMAGE PLACEHOLDER -->
+      <img 
+        src="assets/images/bg-sidebar-desktop.svg"
+        class="absolute inset-0 w-full h-full object-cover md:rounded-l-xl"
+      />
+      
+
+      <div class="relative z-10 flex md:flex-col justify-center md:justify-start gap-6 md:gap-8 p-6 text-white">
+
+        <div class="step-indicator flex items-center gap-3" data-step="1">
+          <div class="circle w-10 h-10 flex items-center justify-center rounded-full border border-white text-white font-bold">
+            1
+          </div>
+          <div class="hidden md:block">
+            <p class="text-xs opacity-70">STEP 1</p>
+            <p class="font-bold">YOUR INFO</p>
+          </div>
+        </div>
+
+        <div class="step-indicator flex items-center gap-3" data-step="2">
+          <div class="circle w-10 h-10 flex items-center justify-center rounded-full border border-white text-white font-bold">
+           2
+          </div>
+          <div class="hidden md:block">
+            <p class="text-xs opacity-70">STEP 2</p>
+            <p class="font-bold">SELECT PLAN</p>
+          </div>
+        </div>
+
+        <div class="step-indicator flex items-center gap-3" data-step="3">
+          <div class="circle w-10 h-10 flex items-center justify-center rounded-full border border-white text-white font-bold">
+             3
+            </div>
+          <div class="hidden md:block">
+            <p class="text-xs opacity-70">STEP 3</p>
+            <p class="font-bold">ADD-ONS</p>
+          </div>
+        </div>
+
+        <div class="step-indicator flex items-center gap-3" data-step="4">
+          <div class="circle w-10 h-10 flex items-center justify-center rounded-full border border-white text-white font-bold">
+           4
+          </div>
+          <div class="hidden md:block">
+            <p class="text-xs opacity-70">STEP 4</p>
+            <p class="font-bold">SUMMARY</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CONTENT -->
+    <!-- <div class="flex-1 p-6 md:p-10"> -->
+    <div class="flex-1 flex flex-col p-10">
+
+  <!-- STEP CONTENT AREA -->
+  <div class="flex-1">
+
+    <!-- STEP 1 -->
+    <div class="step" id="step-1">
+
+      <h1 class="text-3xl font-bold text-blue-900 mb-2">Personal info</h1>
+      <p class="text-gray-500 mb-8">
+        Please provide your name, email address, and phone number.
+      </p>
+
+      <div class="space-y-5">
+
+        <div>
+          <label class="text-sm font-medium text-blue-900">Name</label>
+          <input class="w-full border p-3 rounded-md mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+
+        <div>
+          <label class="text-sm font-medium text-blue-900">Email Address</label>
+          <input class="w-full border p-3 rounded-md mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+
+        <div>
+          <label class="text-sm font-medium text-blue-900">Phone Number</label>
+          <input class="w-full border p-3 rounded-md mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        </div>
+
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+<div class="step hidden" id="step-2">
+
+  <h1 class="text-3xl font-bold text-blue-900 mb-2">Select your plan</h1>
+  <p class="text-gray-500 mb-8">
+    You have the option of monthly or yearly billing.
+  </p>
+
+  <div class="space-y-4 mb-8">
+
+    <div class="plan border p-4 rounded-md cursor-pointer"
+     data-month="9"
+     data-year="90">
+  <p class="font-medium text-blue-900">Arcade</p>
+  <p class="price text-sm text-gray-500">$9/mo</p>
+</div>
+
+    <div class="plan border p-4 rounded-md cursor-pointer"
+     data-month="12"
+     data-year="120">
+  <p class="font-medium text-blue-900">Advanced</p>
+  <p class="price text-sm text-gray-500">$12/mo</p>
+</div>
+ 
+    <div class="plan border p-4 rounded-md cursor-pointer"
+     data-month="15"
+     data-year="150">
+  <p class="font-medium text-blue-900">Pro</p>
+  <p class="price text-sm text-gray-500">$15/mo</p>
+</div>
+
+  </div>
+
+ <div class="flex items-center justify-center gap-4 bg-gray-100 p-3 rounded-md">
+  <span>Monthly</span>
+  <input type="checkbox" id="billingToggle">
+  <span>Yearly</span>
+</div>
+
+</div>
+
+<!-- STEP 3 -->
+<div class="step hidden" id="step-3">
+
+  <h1 class="text-3xl font-bold text-blue-900 mb-2">Pick add-ons</h1>
+  <p class="text-gray-500 mb-8">
+    Add-ons help enhance your gaming experience.
+  </p>
+
+  <div class="space-y-4">
+
+    <label class="flex items-center justify-between border p-4 rounded-md cursor-pointer">
+      <div>
+        <p class="font-medium text-blue-900">Online service</p>
+        <p class="text-sm text-gray-500">Access to multiplayer games</p>
+      </div>
+      <input type="checkbox">
+    </label>
+
+    <label class="flex items-center justify-between border p-4 rounded-md cursor-pointer">
+      <div>
+        <p class="font-medium text-blue-900">Larger storage</p>
+        <p class="text-sm text-gray-500">Extra 1TB of cloud save</p>
+      </div>
+      <input type="checkbox">
+    </label>
+
+    <label class="flex items-center justify-between border p-4 rounded-md cursor-pointer">
+      <div>
+        <p class="font-medium text-blue-900">Customizable profile</p>
+        <p class="text-sm text-gray-500">Custom theme on your profile</p>
+      </div>
+      <input type="checkbox">
+    </label>
+
+  </div>
+
+</div>
+
+<!-- STEP 4 -->
+<div class="step hidden" id="step-4">
+
+  <h1 class="text-3xl font-bold text-blue-900 mb-2">Finishing up</h1>
+  <p class="text-gray-500 mb-8">
+    Double-check everything looks OK before confirming.
+  </p>
+
+  <div class="bg-gray-100 p-6 rounded-md space-y-3">
+
+    <div class="flex justify-between">
+      <span class="font-medium text-blue-900">Arcade (Monthly)</span>
+      <span>$9/mo</span>
+    </div>
+
+    <hr>
+
+    <div class="flex justify-between text-gray-600">
+      <span>Online service</span>
+      <span>+$1/mo</span>
+    </div>
+
+    <div class="flex justify-between text-gray-600">
+      <span>Larger storage</span>
+      <span>+$2/mo</span>
+    </div>
+
+  </div>
+
+  <div class="flex justify-between mt-6 font-bold text-blue-900">
+    <span>Total (per month)</span>
+    <span>$12/mo</span>
+  </div>
+
+</div>
+
+<!-- STEP 5 -->
+<div class="step text-center flex flex-col justify-center items-center h-full" id="step-5">
+
+  <div class="mb-6">
+    <!-- ADD THANK YOU IMAGE HERE -->
+  </div>
+
+  <h1 class="text-3xl font-bold text-blue-900 mb-4">
+    Thank you!
+  </h1>
+
+  <p class="text-gray-500 max-w-sm">
+    Thanks for confirming your subscription! 
+    We hope you have fun using our platform.
+  </p>
+
+</div>
+
+  </div>
+
+  <!-- FOOTER BUTTONS (ALWAYS AT BOTTOM) -->
+  <div class="flex justify-between items-center mt-10">
+
+    <button onclick="prevStep()" class="text-gray-500 font-medium">
+      Go Back
+    </button>
+
+    <button onclick="nextStep()" class="bg-blue-900 text-white px-6 py-2 rounded-md">
+      Next Step
+    </button>
+
+  </div>
+
+  </div>
+
+  </div>
+
+<script>
+ 
+let currentStep = 1;
+
+function showStep(step) {
+  document.querySelectorAll(".step").forEach(el => {
+    el.classList.add("hidden");
+  });
+
+  document.getElementById("step-" + step).classList.remove("hidden");
+
+  document.querySelectorAll(".circle").forEach((circle, index) => {
+    circle.classList.remove("active");
+    if (index + 1 === step) {
+      circle.classList.add("active");
+    }
+  });
+
+  currentStep = step;
+}
+
+function nextStep() {
+  if (currentStep < 5) {
+    showStep(currentStep + 1);
+  }
+}
+
+function prevStep() {
+  if (currentStep > 1) {
+    showStep(currentStep - 1);
+  }
+}
+
+showStep(1);
+
+
+function updateSidebar(step){
+  document.querySelectorAll(".circle").forEach((circle, index)=>{
+    circle.classList.remove("active");
+    if(index+1 === step){
+      circle.classList.add("active");
+    }
+  });
+}
+
+document.querySelectorAll(".plan").forEach(plan=>{
+  plan.addEventListener("click", ()=>{
+    document.querySelectorAll(".plan").forEach(p=>p.classList.remove("border-blue-500"));
+    plan.classList.add("border-blue-500");
+    selectedPlan = plan;
+  });
+});
+
+function updateSummary(){
+
+  const billingYearly = document.getElementById("billingToggle").checked;
+
+  if(!selectedPlan){
+    document.getElementById("summary").innerHTML = "No plan selected.";
+    return;
+  }
+
+  let basePrice = billingYearly 
+    ? selectedPlan.dataset.year 
+    : selectedPlan.dataset.month;
+
+  let addonTotal = 0;
+
+  document.querySelectorAll(".addon:checked").forEach(addon=>{
+    addonTotal += parseInt(addon.dataset.price);
+  });
+
+  let total = parseInt(basePrice) + addonTotal;
+
+  document.getElementById("summary").innerHTML = `
+    <p>Plan: ${selectedPlan.dataset.plan}</p>
+    <p>Billing: ${billingYearly ? "Yearly" : "Monthly"}</p>
+    <p>Total: $${total}</p>
+  `;
+}
+
+
+const toggle = document.getElementById("billingToggle");
+
+toggle.addEventListener("change", function () {
+
+  const isYearly = toggle.checked;
+
+  document.querySelectorAll(".plan").forEach(function(plan) {
+
+    const monthPrice = plan.getAttribute("data-month");
+    const yearPrice = plan.getAttribute("data-year");
+    const priceText = plan.querySelector(".price");
+
+    if (isYearly) {
+      priceText.textContent = "$" + yearPrice + "/yr";
+    } else {
+      priceText.textContent = "$" + monthPrice + "/mo";
+    }
+
+  });
+
+});
+
+</script>
+
+
 </body>
+
 </html>
   
   
 
 
 
-  Step 1
-  Your info
-
-  Step 2
-  Select plan
-
-  Step 3
-  Add-ons
-
-  Step 4
-  Summary
+  
 
   
 
